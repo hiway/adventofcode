@@ -67,6 +67,13 @@ def day3():
 @click.argument('input_file', type=click.File())
 def part1(input_file):
     from day3 import part1_sanda_gps
-    total = 0
     for directions in input_file:
         print(part1_sanda_gps(directions.strip()))
+
+
+@day3.command()
+@click.argument('input_file', type=click.File())
+def part2(input_file):
+    from day3 import part2_santa_and_robo_santa_gps
+    for directions in input_file:
+        print(part2_santa_and_robo_santa_gps(directions.strip()))

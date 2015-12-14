@@ -51,4 +51,53 @@ def part1_sanda_gps(directions):
             map[pin] += 1
         else:
             map[pin] = 1
-    return(len([pin for pin in map if map[pin] >= 1]))
+    return (len([pin for pin in map if map[pin] >= 1]))
+
+
+def part2_santa_and_robo_santa_gps(directions):
+    """
+    --- Part Two ---
+
+    The next year, to speed up the process, Santa creates a
+    robot version of himself, Robo-Santa, to deliver presents
+    with him.
+
+    Santa and Robo-Santa start at the same location (delivering
+    two presents to the same starting house), then take turns
+    moving based on instructions from the elf, who is eggnoggedly
+    reading from the same script as the previous year.
+
+    This year, how many houses receive at least one present?
+
+    For example:
+
+    ^v delivers presents to 3 houses, because Santa goes north,
+        and then Robo-Santa goes south.
+    ^>v< now delivers presents to 3 houses, and Santa and
+        Robo-Santa end up back where they started.
+    ^v^v^v^v^v now delivers presents to 11 houses, with Santa
+        going one direction and Robo-Santa going the other.
+    """
+    import collections
+
+    santa_visits = collections.Counter(['0_0'])
+    robo_visits = collections.Counter()
+
+    santa_x, santa_y = 0, 0
+    robo_x, robo_y = 0, 0
+    santa_turn = True
+
+    for direction in directions:
+        if santa_turn is True:
+            santa_x, santa_y = get_next_coordinates(santa_x, santa_y, direction)
+            pin = '{0}_{1}'.format(santa_x, santa_y)
+            santa_visits.update([pin])
+            santa_turn = False
+        else:
+            robo_x, robo_y = get_next_coordinates(robo_x, robo_y, direction)
+            pin = '{0}_{1}'.format(robo_x, robo_y)
+            robo_visits.update([pin])
+            santa_turn = True
+
+    final_map = santa_visits + robo_visits
+    return sum([1 for val in final_map.values() if val >= 1])
