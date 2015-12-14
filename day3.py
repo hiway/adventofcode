@@ -1,4 +1,20 @@
+import collections
+
+
 def get_next_coordinates(x, y, direction):
+    """
+    >>> get_next_coordinates(0, 0, '>')
+    (1, 0)
+
+    >>> get_next_coordinates(0, 0, '<')
+    (-1, 0)
+
+    >>> get_next_coordinates(0, 0, '^')
+    (0, 1)
+
+    >>> get_next_coordinates(0, 0, 'v')
+    (0, -1)
+    """
     if direction == '^':
         y += 1
     elif direction == 'v':
@@ -36,22 +52,30 @@ def part1_sanda_gps(directions):
     For example:
     > delivers presents to 2 houses: one at the starting
         location, and one to the east.
+
+    >>> part1_sanda_gps('>')
+    2
+
     ^>v< delivers presents to 4 houses in a square,
         including twice to the house at his starting/
         ending location.
+
+    >>> part1_sanda_gps('^>v<')
+    4
+
     ^v^v^v^v^v delivers a bunch of presents to some very
         lucky children at only 2 houses.
+
+    >>> part1_sanda_gps('^v^v^v^v^v')
+    2
     """
-    map = {}  # we'll make a sparse map of places visited
+    visits = collections.Counter(['0_0'])
     x, y = 0, 0
     for direction in directions:
         x, y = get_next_coordinates(x, y, direction)
         pin = '{0}_{1}'.format(x, y)
-        if map.get(pin):
-            map[pin] += 1
-        else:
-            map[pin] = 1
-    return (len([pin for pin in map if map[pin] >= 1]))
+        visits.update([pin])
+    return sum([1 for val in visits.values() if val >= 1])
 
 
 def part2_santa_and_robo_santa_gps(directions):
@@ -73,10 +97,21 @@ def part2_santa_and_robo_santa_gps(directions):
 
     ^v delivers presents to 3 houses, because Santa goes north,
         and then Robo-Santa goes south.
+
+    >>> part2_santa_and_robo_santa_gps('^v')
+    3
+
     ^>v< now delivers presents to 3 houses, and Santa and
         Robo-Santa end up back where they started.
+
+    >>> part2_santa_and_robo_santa_gps('^>v<')
+    3
+
     ^v^v^v^v^v now delivers presents to 11 houses, with Santa
         going one direction and Robo-Santa going the other.
+
+    >>> part2_santa_and_robo_santa_gps('^v^v^v^v^v')
+    11
     """
     import collections
 
