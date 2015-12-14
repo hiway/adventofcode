@@ -28,7 +28,7 @@ def get_next_coordinates(x, y, direction):
     return x, y
 
 
-def part1_sanda_gps(directions):
+def part1_santa_gps(directions):
     """
     --- Day 3: Perfectly Spherical Houses in a Vacuum ---
 
@@ -53,20 +53,20 @@ def part1_sanda_gps(directions):
     > delivers presents to 2 houses: one at the starting
         location, and one to the east.
 
-    >>> part1_sanda_gps('>')
+    >>> part1_santa_gps('>')
     2
 
     ^>v< delivers presents to 4 houses in a square,
         including twice to the house at his starting/
         ending location.
 
-    >>> part1_sanda_gps('^>v<')
+    >>> part1_santa_gps('^>v<')
     4
 
     ^v^v^v^v^v delivers a bunch of presents to some very
         lucky children at only 2 houses.
 
-    >>> part1_sanda_gps('^v^v^v^v^v')
+    >>> part1_santa_gps('^v^v^v^v^v')
     2
     """
     visits = collections.Counter(['0_0'])
