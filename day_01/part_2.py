@@ -31,7 +31,7 @@ def change_floor(direction):
 @click.option('--halt_at_floor', type=int, default=None)
 def santa_walk(directions, halt_at_floor):
     """
-    Usage: python day_01_part_2.py --halt_at_floor=2 "()()((()(()())()("
+    Usage: python part_2.py --halt_at_floor=2 "()()((()(()())()("
 
     :param directions: string containing either ( or )
     :param halt_at_floor: integer, floor where we want to get position

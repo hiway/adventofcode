@@ -38,7 +38,7 @@ def change_floor(direction):
 @click.argument('directions', type=str)
 def santa_walk(directions):
     """
-    Usage: python day_01_part_1.py "()()((()(()())()("
+    Usage: python part_1.py "()()((()(()())()("
 
     :param directions: string containing either ( or )
     :return:

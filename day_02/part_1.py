@@ -43,7 +43,7 @@ def wrapping_paper_estimate(length, width, height):
 
 @click.command()
 def feed_wrapping_paper_estimates():
-    # Get input from stdin (cat puzzle.input | python day_01_part_1.py)
+    # Get input from stdin (cat puzzle.input | python part_1.py)
     boxes = fileinput.FileInput()
     total = 0
     for dimensions in boxes:
