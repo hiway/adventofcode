@@ -14,18 +14,19 @@ def day1():
 @day1.command()
 @click.argument('input_file', type=click.File())
 def part1(input_file):
-    from day1 import part1
+    from day1 import part1_stanta_floor_positioning_system
     for directions in input_file:
-        print('Final Floor: {0}'.format(part1(directions)))
+        floor = part1_stanta_floor_positioning_system(directions)
+        print('Final Floor: {0}'.format(floor))
 
 
 @day1.command()
 @click.argument('input_file', type=click.File())
 @click.option('--halt', type=int)
 def part2(input_file, halt):
-    from day1 import part2
+    from day1 import part2_santa_fps_halt
     for directions in input_file:
-        position = part2(directions, halt)
+        position = part2_santa_fps_halt(directions, halt)
         if position is not None:
             print('Position: {0}'.format(position))
         else:

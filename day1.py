@@ -8,7 +8,7 @@ def change_floor(direction):
     raise SyntaxError('Expected ( or ) , got {0}'.format(direction))
 
 
-def part1(directions):
+def part1_stanta_floor_positioning_system(directions):
     """
     http://adventofcode.com/day/1
 
@@ -39,7 +39,7 @@ def part1(directions):
     return floor
 
 
-def part2(directions, halt_on_floor):
+def part2_santa_fps_halt(directions, halt_on_floor):
     """
     http://adventofcode.com/day/1
 
