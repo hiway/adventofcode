@@ -8,8 +8,8 @@ My attempts at puzzles from adventofcode.com
 	cd adventofcode
 	pip install --editable .
 	
-	adventofcode day1 part1 day1.input
-	adventofcode day1 part2 day1.input --halt=-1
-	adventofcode day2 part1 day2.input
-	adventofcode day2 part2 day2.input
+	adventofcode day1 part1 inputs/day1
+	adventofcode day1 part2 inputs/day1 --halt=-1
+	adventofcode day2 part1 inputs/day2
+	adventofcode day2 part2 inputs/day2
 	
