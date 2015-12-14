@@ -56,3 +56,17 @@ def part2(input_file):
     for dimensions in input_file:
         total += part2_ribbon_estimate(dimensions)
     print('Total ribbon required: {0} ft'.format(total))
+
+
+@cli.group()
+def day3():
+    pass
+
+
+@day3.command()
+@click.argument('input_file', type=click.File())
+def part1(input_file):
+    from day3 import part1_sanda_gps
+    total = 0
+    for directions in input_file:
+        print(part1_sanda_gps(directions.strip()))
