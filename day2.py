@@ -1,3 +1,6 @@
+split_dimensions = lambda dimensions: [int(dim) for dim in dimensions.strip().lower().split('x')]
+
+
 def part1_wrapping_paper_estimate(dimensions):
     """
     http://adventofcode.com/day/2
@@ -29,8 +32,44 @@ def part1_wrapping_paper_estimate(dimensions):
     All numbers in the elves' list are in feet.
     How many total square feet of wrapping paper should they order?
     """
-    length, height, width = [int(dim) for dim in dimensions.strip().lower().split('x')]
+    length, height, width = split_dimensions(dimensions)
     surface_areas = [(2 * length * width), (2 * width * height), (2 * height * length)]  # list of surface areas
     smallest_surface = (min(surface_areas) / 2)  # slack: smallest surface area (remove the *2 above)
     final_surface_area = sum(surface_areas)  # surface area of entire box
     return (final_surface_area + smallest_surface)
+
+
+def part2_ribbon_estimate(dimensions):
+    """
+    --- Part Two ---
+    The elves are also running low on ribbon. Ribbon is all the
+    same width, so they only have to worry about the length they
+    need to order, which they would again like to be exact.
+
+    The ribbon required to wrap a present is the shortest distance
+    around its sides, or the smallest perimeter of any one face.
+    Each present also requires a bow made out of ribbon as well;
+    the feet of ribbon required for the perfect bow is equal to
+    the cubic feet of volume of the present. Don't ask how they
+    tie the bow, though; they'll never tell.
+
+    For example:
+
+        A present with dimensions 2x3x4 requires
+            2+2+3+3 = 10 feet of ribbon to wrap the present
+            plus 2*3*4 = 24 feet of ribbon for the bow,
+            for a total of 34 feet.
+        A present with dimensions 1x1x10 requires
+            1+1+1+1 = 4 feet of ribbon to wrap the present
+            plus 1*1*10 = 10 feet of ribbon for the bow,
+            for a total of 14 feet.
+
+    How many total feet of ribbon should they order?
+    """
+    dims = split_dimensions(dimensions)
+    length, height, width = dims
+    dims.sort()  # get the smallest two sides on left
+    s1, s2 = dims[:2]  # pick the smallest two sides
+    ribbon_for_present = s1 + s1 + s2 + s2
+    ribbon_for_bow = length * height * width
+    return ribbon_for_present + ribbon_for_bow

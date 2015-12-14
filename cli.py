@@ -46,3 +46,13 @@ def part1(input_file):
     for dimensions in input_file:
         total += part1_wrapping_paper_estimate(dimensions)
     print('Total wrapping paper required: {0} sq ft'.format(total))
+
+
+@day2.command()
+@click.argument('input_file', type=click.File())
+def part2(input_file):
+    from day2 import part2_ribbon_estimate
+    total = 0
+    for dimensions in input_file:
+        total += part2_ribbon_estimate(dimensions)
+    print('Total ribbon required: {0} ft'.format(total))
