@@ -78,7 +78,7 @@ def part1_santa_gps(directions):
     return sum([1 for val in visits.values() if val >= 1])
 
 
-def part2_santa_and_robo_santa_gps(directions):
+def part2_santa_and_robo_gps(directions):
     """
     --- Part Two ---
 
@@ -98,23 +98,21 @@ def part2_santa_and_robo_santa_gps(directions):
     ^v delivers presents to 3 houses, because Santa goes north,
         and then Robo-Santa goes south.
 
-    >>> part2_santa_and_robo_santa_gps('^v')
+    >>> part2_santa_and_robo_gps('^v')
     3
 
     ^>v< now delivers presents to 3 houses, and Santa and
         Robo-Santa end up back where they started.
 
-    >>> part2_santa_and_robo_santa_gps('^>v<')
+    >>> part2_santa_and_robo_gps('^>v<')
     3
 
     ^v^v^v^v^v now delivers presents to 11 houses, with Santa
         going one direction and Robo-Santa going the other.
 
-    >>> part2_santa_and_robo_santa_gps('^v^v^v^v^v')
+    >>> part2_santa_and_robo_gps('^v^v^v^v^v')
     11
     """
-    import collections
-
     santa_visits = collections.Counter(['0_0'])
     robo_visits = collections.Counter()
 

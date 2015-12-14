@@ -74,6 +74,6 @@ def part1(input_file):
 @day3.command()
 @click.argument('input_file', type=click.File())
 def part2(input_file):
-    from day3 import part2_santa_and_robo_santa_gps
+    from day3 import part2_santa_and_robo_gps
     for directions in input_file:
-        print(part2_santa_and_robo_santa_gps(directions.strip()))
+        print(part2_santa_and_robo_gps(directions.strip()))
