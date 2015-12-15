@@ -1,4 +1,4 @@
-def part1_adventcoin_miner(key):
+def part1_adventcoin_miner(secret_key):
     """
     --- Day 4: The Ideal Stocking Stuffer ---
 
@@ -35,6 +35,6 @@ def part1_adventcoin_miner(key):
     """
     from hashlib import md5
     for x in range(99999999):
-        newkey = md5(key + str(x)).hexdigest()
+        newkey = md5(secret_key + str(x)).hexdigest()
         if newkey[:5] == '00000':
             return(x)

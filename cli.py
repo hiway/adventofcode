@@ -77,3 +77,15 @@ def part2(input_file):
     from day3 import part2_santa_and_robo_gps
     for directions in input_file:
         print(part2_santa_and_robo_gps(directions.strip()))
+
+
+@cli.group()
+def day4():
+    pass
+
+
+@day4.command()
+@click.argument('secret_key')
+def part1(secret_key):
+    from day4 import part1_adventcoin_miner
+    print(part1_adventcoin_miner(secret_key.strip()))
