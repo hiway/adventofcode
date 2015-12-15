@@ -38,3 +38,15 @@ def part1_adventcoin_miner(secret_key):
         newkey = md5(secret_key + str(x)).hexdigest()
         if newkey[:5] == '00000':
             return(x)
+
+
+def part2_adventcoin_miner(secret_key, match='000000'):
+    """
+    --- Part Two ---
+    Now find one that starts with six zeroes.
+    """
+    from hashlib import md5
+    for x in range(99999999):
+        newkey = md5(secret_key + str(x)).hexdigest()
+        if newkey[:len(match)] == match:
+            return (x)

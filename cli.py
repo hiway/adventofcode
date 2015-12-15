@@ -89,3 +89,11 @@ def day4():
 def part1(secret_key):
     from day4 import part1_adventcoin_miner
     print(part1_adventcoin_miner(secret_key.strip()))
+
+
+@day4.command()
+@click.argument('secret_key')
+@click.argument('match', default='000000')
+def part2(secret_key, match):
+    from day4 import part2_adventcoin_miner
+    print(part2_adventcoin_miner(secret_key.strip(), match))
