@@ -111,5 +111,5 @@ def part1(input_file):
     from day5 import part1_is_nice_string
     results = collections.Counter()
     results.update([part1_is_nice_string(directions.strip()) for directions in input_file])
-    print(results.most_common(10))
+    print(results[True])
 
